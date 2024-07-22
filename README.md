@@ -30,7 +30,6 @@ docker volume create pgdata
 Create a docker-compose.yml file on the new system. This file will define the services, network, and volumes.
 
 version: '3.8'
-
 services:
   db:
     image: satvik403/my-postgres-container:latest
