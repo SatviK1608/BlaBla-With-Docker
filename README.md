@@ -9,27 +9,26 @@ Open a terminal and log in to Docker Hub.
 ## Pull the Docker images:
 Pull the images from your Docker Hub repository.
 
-sh
 docker pull satvik403/my-node-server:latest
+
 docker pull satvik403/my-react-client:latest
+
 docker pull satvik403/my-postgres-container:latest
 
 ## Create a Docker network:
 Create the shared network that will be used by the containers.
 
-sh
+
 docker network create shared-network
 
 ## Create Docker volumes:
 Create Docker volumes to persist the PostgreSQL data.
 
-sh
 docker volume create pgdata
 
 ## Create a Docker Compose file:
 Create a docker-compose.yml file on the new system. This file will define the services, network, and volumes.
 
-yaml
 version: '3.8'
 
 services:
