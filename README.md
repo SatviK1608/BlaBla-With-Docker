@@ -34,5 +34,4 @@ Create a docker-compose.yml file on the new system. This file will define the se
 ## Run Docker Compose:
 Use Docker Compose to start the application.
 
-sh
 docker-compose up
