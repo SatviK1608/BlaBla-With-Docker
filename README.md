@@ -27,53 +27,8 @@ Create Docker volumes to persist the PostgreSQL data.
 docker volume create pgdata
 
 ## Create a Docker Compose file:
-Create a docker-compose.yml file on the new system. This file will define the services, network, and volumes.
+Create a docker-compose.yml file on the new system. This file will define the services([image will be satvik403/my-node-server:latest,satvik403/my-react-client:latest,my-postgres-container:latest,define ports,define container_name,define environment,mention depends_on]), network(shared-network), and volumes(pgdata).
 
-version: '3.8'
-services:
-  db:
-    image: satvik403/my-postgres-container:latest
-    container_name: my-postgres-container
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: blaBla
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - shared-network
-
-  app:
-    image: satvik403/my-node-server:latest
-    container_name: my-node-app
-    environment:
-      DB_HOST: db
-      DB_USER: postgres
-      DB_PASSWORD: 123
-      DB_NAME: blaBla
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    networks:
-      - shared-network
-
-  client:
-    image: satvik403/my-react-client:latest
-    container_name: my-react-client
-    ports:
-      - "3001:3000"
-    networks:
-      - shared-network
-
-networks:
-  shared-network:
-    driver: bridge
-
-volumes:
-  pgdata:
 
 
 ## Run Docker Compose:
